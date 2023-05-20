@@ -1,0 +1,31 @@
+import { ReactNode } from 'react';
+
+export default function Dropdown({
+    children,
+    title,
+    className,
+}: {
+    children: ReactNode;
+    title: ReactNode;
+    className?: string;
+}) {
+    return (
+        <div className={` ${className}`}>
+            <div className="inline-block relative group">
+                <button className="bg-transparent text-inherit font-semibold py-2 px-4 rounded inline-flex items-center">
+                    <span className="mr-1 min-w-[100px]">{title}</span>
+                    <svg
+                        className="fill-current mb-1 h-6 w-6 group-hover:rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                    >
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                </button>
+                <ul className="group-hover:block absolute hidden text-gray-500 z-40 bg-gray-100 rounded-lg overflow-hidden min-w-[160px]">
+                    {children}
+                </ul>
+            </div>
+        </div>
+    );
+}
